@@ -333,13 +333,18 @@ main {
   min-height: 54px;
   padding: 14px 18px;
   border-radius: 999px;
-  background: #06c755;
+  background: linear-gradient(135deg, #06c755 0%, #02b84c 100%);
   color: #fff;
   font-size: 0.95rem;
   font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 18px 36px rgba(6, 199, 85, 0.32);
+  box-shadow:
+    0 16px 34px rgba(6, 199, 85, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.22) inset,
+    0 0 24px rgba(6, 199, 85, 0.22);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  animation: premiumLineBounce 2.1s ease-in-out infinite;
+  will-change: transform, box-shadow;
 }
 
 .floating-line-button span {
@@ -351,9 +356,31 @@ main {
 }
 
 .floating-line-button:hover {
-  background: #05b24b;
-  transform: translateY(-3px);
-  box-shadow: 0 22px 42px rgba(6, 199, 85, 0.38);
+  background: linear-gradient(135deg, #08d85f 0%, #05b24b 100%);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:
+    0 22px 46px rgba(6, 199, 85, 0.36),
+    0 0 0 1px rgba(255, 255, 255, 0.28) inset,
+    0 0 32px rgba(6, 199, 85, 0.3);
+}
+
+@keyframes premiumLineBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow:
+      0 16px 34px rgba(6, 199, 85, 0.28),
+      0 0 0 1px rgba(255, 255, 255, 0.22) inset,
+      0 0 24px rgba(6, 199, 85, 0.22);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.018);
+    box-shadow:
+      0 22px 42px rgba(6, 199, 85, 0.34),
+      0 0 0 1px rgba(255, 255, 255, 0.26) inset,
+      0 0 30px rgba(6, 199, 85, 0.28);
+  }
 }
 
 .site-footer {
@@ -426,5 +453,12 @@ main {
   .section {
     padding: 26px 20px;
     border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-line-button {
+    animation: none;
+    will-change: auto;
   }
 }
