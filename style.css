@@ -56,6 +56,15 @@ a {
   font-weight: 800;
   text-decoration: none;
   letter-spacing: 0;
+  box-shadow: 0 12px 26px rgba(32, 33, 36, 0.18);
+  animation: logoFloat 5.4s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.logo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px rgba(32, 33, 36, 0.22);
 }
 
 .site-header nav {
@@ -123,36 +132,74 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.hero-socials span {
+.hero-socials > span {
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
-.hero-socials a {
+.hero-social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 38px;
-  padding: 8px 14px;
+  padding: 8px 15px 8px 10px;
   border-radius: 999px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.86);
   border: 1px solid var(--border);
   color: var(--text);
   font-size: 0.92rem;
   font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 8px 20px rgba(32, 33, 36, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 10px 24px rgba(32, 33, 36, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.hero-socials a:hover {
-  transform: translateY(-2px);
-  border-color: rgba(15, 118, 110, 0.28);
-  box-shadow: 0 14px 30px rgba(32, 33, 36, 0.1);
+.hero-social-link span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-facebook-link {
+  border-color: rgba(24, 119, 242, 0.18);
+}
+
+.hero-facebook-link span {
+  background: #1877f2;
+}
+
+.hero-line-link {
+  border-color: rgba(6, 199, 85, 0.2);
+}
+
+.hero-line-link span {
+  background: #06c755;
+}
+
+.hero-social-link:hover {
+  transform: translateY(-3px);
+  background: #fff;
+  box-shadow: 0 16px 32px rgba(32, 33, 36, 0.11);
+}
+
+.hero-facebook-link:hover {
+  border-color: rgba(24, 119, 242, 0.34);
+}
+
+.hero-line-link:hover {
+  border-color: rgba(6, 199, 85, 0.38);
 }
 
 .hero-actions {
@@ -383,6 +430,17 @@ main {
   }
 }
 
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .site-footer {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
@@ -427,11 +485,11 @@ main {
     align-items: stretch;
   }
 
-  .hero-socials span {
+  .hero-socials > span {
     width: 100%;
   }
 
-  .hero-socials a {
+  .hero-social-link {
     flex: 1;
   }
 
@@ -457,6 +515,7 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .logo,
   .floating-line-button {
     animation: none;
     will-change: auto;
